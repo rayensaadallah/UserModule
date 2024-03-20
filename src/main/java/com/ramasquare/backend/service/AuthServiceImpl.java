@@ -40,7 +40,8 @@ public class AuthServiceImpl implements AuthService {
 
     // Create App User model
     var appUser = AppUser.builder()
-        .name(signUpRequest.getName())
+        .userName(signUpRequest.getUsername())
+        .phoneNumber(signUpRequest.getPhoneNumber())
         .email(signUpRequest.getEmail())
         .password(passwordEncoder.encode(signUpRequest.getPassword()))
         .build();

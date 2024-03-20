@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService{
     var appUser = getUserInfo(userId);
 
     // Update name
-    appUser.setName(name);
+    appUser.setUserName(name);
 
     // Save user
     var saved = appUserRepo.save(appUser);

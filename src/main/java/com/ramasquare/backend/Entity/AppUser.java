@@ -20,7 +20,8 @@ import java.time.LocalDateTime;
 public class AppUser {
   @Id
   private String userId;
-  private String name;
+  private String userName;
+  private String phoneNumber;
   @Indexed
   private String email;
   private String password;

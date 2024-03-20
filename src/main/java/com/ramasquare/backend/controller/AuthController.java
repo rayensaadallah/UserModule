@@ -1,10 +1,7 @@
 package com.ramasquare.backend.controller;
 
+import com.ramasquare.backend.Dto.auth.*;
 import com.ramasquare.backend.constant.LoggingConstants;
-import com.ramasquare.backend.Dto.auth.AuthRequest;
-import com.ramasquare.backend.Dto.auth.AuthResponse;
-import com.ramasquare.backend.Dto.auth.VerifyTokenRequest;
-import com.ramasquare.backend.Dto.auth.VerifyTokenResponse;
 import com.ramasquare.backend.Dto.mapper.AuthRequestMapper;
 import com.ramasquare.backend.service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -26,17 +23,12 @@ public class AuthController {
   //  Sign up
   @PostMapping("/sign-up")
   public ResponseEntity<AuthResponse> signUp(
-      @RequestBody AuthRequest authRequest
+      @RequestBody SignUpRequest signUpRequest
   ) {
     var methodName = "AuthController:signUp";
-    log.info(LoggingConstants.START_METHOD_LOG, methodName, authRequest);
-
-    var accessToken = authService.signUp(
-        AuthRequestMapper.INSTANCE.mapToSignUpRequest(authRequest)
-    );
-
+    log.info(LoggingConstants.START_METHOD_LOG, methodName, signUpRequest);
+    var accessToken = authService.signUp(signUpRequest);
     log.info(LoggingConstants.END_METHOD_LOG, methodName);
-
     return ResponseEntity
         .status(HttpStatus.CREATED)
         .body(
